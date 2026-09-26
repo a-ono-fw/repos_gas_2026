@@ -17,17 +17,21 @@
     "allowJs": true,
     "paths": {
       "@/*": [
-        "./src/*"
+        "./client/src/*"
+      ],
+      "@shared/*": [
+        "./shared/*"
       ]
     },
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.vue",
+    "client/src/**/*.ts",
+    "client/src/**/*.d.ts",
+    "client/src/**/*.vue",
     "server/**/*.ts",
-    "server.ts"
+    "server.ts",
+    "shared/**/*.ts"
   ]
 }

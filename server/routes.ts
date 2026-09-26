@@ -1,4 +1,5 @@
 import { Router, type Request, type Response } from 'express';
+import type { CreateTodoInput, UpdateTodoInput } from '../shared/types/todo.js';
 import {
   getAllTodos,
   getTodoById,

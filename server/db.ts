@@ -1,19 +1,13 @@
 import initSqlJs, { type Database as SqlDatabase } from 'sql.js';
 import fs from 'fs';
 import path from 'path';
+import type { Todo } from '../shared/types/todo.js';
 
 let db: SqlDatabase | null = null;
 const DATA_DIR = path.resolve(process.cwd(), 'data');
 const DB_FILE = path.join(DATA_DIR, 'todos.sqlite');
 
-export interface TodoRecord {
-  id: number;
-  title: string;
-  description: string;
-  completed: number; // 0 or 1
-  created_at: string;
-  updated_at: string;
-}
+export type TodoRecord = Todo;
 
 export async function initDatabase(): Promise<SqlDatabase> {
   if (db) return db;
