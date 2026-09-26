@@ -1,5 +1,24 @@
+<script setup lang="ts">
+const emit = defineEmits<{
+  (e: 'switch-to-todos'): void;
+}>();
+</script>
+
 <template>
   <div class="space-y-6">
+    <!-- Back to TODOs Navigation -->
+    <div class="flex items-center justify-between">
+      <button
+        type="button"
+        @click="emit('switch-to-todos')"
+        class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-700 hover:text-slate-900 bg-white border border-slate-200 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-colors cursor-pointer shadow-2xs"
+      >
+        <span>←</span>
+        <span>TODOリストに戻る</span>
+      </button>
+      <span class="text-xs text-slate-400 font-mono">docs/api-specification</span>
+    </div>
+
     <div class="bg-white border border-slate-200 rounded-lg p-5">
       <h2 class="text-base font-semibold text-slate-900">Node.js (Express) バックエンド REST API仕様</h2>
       <p class="text-xs text-slate-600 mt-1">

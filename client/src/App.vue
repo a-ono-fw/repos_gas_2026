@@ -175,25 +175,28 @@ const handleDeleteTodo = async (id: number) => {
 
       <!-- Tab 1: TODO CRUD View -->
       <div v-if="activeTab === 'todos'" class="space-y-6">
-        <!-- Dashboard Metrics & Progress -->
-        <div class="bg-white border border-slate-200 rounded-lg p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <!-- Dashboard Metrics & Progress (Option A: Slate Dark) -->
+        <div class="bg-slate-700 border border-slate-800 rounded-lg p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs text-white">
           <div>
-            <h1 class="text-lg font-bold text-slate-900 tracking-tight">TODO管理</h1>
-            <p class="text-xs text-slate-500 mt-0.5">
+            <h1 class="text-lg font-bold text-white tracking-tight flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              TODO管理
+            </h1>
+            <p class="text-xs text-slate-400 mt-1">
               フロントエンド(Vue) → バックエンド(Node.js/Express) → DB(SQLite) リアルタイムCRUD
             </p>
           </div>
 
           <div class="flex items-center gap-4 text-xs font-mono">
-            <div class="flex flex-col">
-              <span class="text-slate-400">進捗状況</span>
-              <span class="text-sm font-semibold tabular-nums text-slate-900">
+            <div class="flex flex-col text-left">
+              <span class="text-slate-400 text-[11px]">進捗状況</span>
+              <span class="text-sm font-semibold tabular-nums text-emerald-400">
                 {{ completedCount }} / {{ totalCount }} 完了 ({{ completionPercentage }}%)
               </span>
             </div>
-            <div class="w-28 bg-slate-100 h-2.5 rounded-full overflow-hidden shrink-0">
+            <div class="w-28 bg-slate-800 h-2.5 rounded-full overflow-hidden shrink-0 border border-slate-700/60">
               <div
-                class="bg-emerald-600 h-full transition-all duration-300 rounded-full"
+                class="bg-emerald-500 h-full transition-all duration-300 rounded-full"
                 :style="{ width: `${completionPercentage}%` }"
               ></div>
             </div>
@@ -309,30 +312,41 @@ const handleDeleteTodo = async (id: number) => {
       <!-- Tab 3: API Reference -->
       <ApiReference
         v-else-if="activeTab === 'api'"
+        @switch-to-todos="activeTab = 'todos'"
       />
     </main>
 
-    <!-- Clean Footer -->
+    <!-- Clean Footer with Emphasized Developer Toolbar (Option 3) -->
     <footer class="border-t border-slate-200 bg-white py-4 mt-auto">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
         <div class="flex items-center gap-2">
-          <span>Vue 3 + Node.js (Express) + SQLite Starter</span>
+          <span>Vue 3 + Node.js (Express) + SQLite</span>
           <span aria-hidden="true">·</span>
-          <span>Full-Stack Template</span>
+          <span>Full-Stack Starter</span>
         </div>
-        <div class="flex items-center gap-3">
+
+        <!-- Option 3: Developer Toolbar -->
+        <div class="inline-flex items-center bg-slate-700 text-slate-100 rounded-lg p-1 shadow-xs border border-slate-600/70 text-xs">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-slate-300 font-medium text-[11px] tracking-wide">
+            <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+            開発ドキュメント
+          </span>
+          <div class="h-3.5 w-px bg-slate-500/60 mx-0.5"></div>
           <button
             type="button"
             @click="activeTab = 'architecture'"
-            class="hover:text-slate-800 transition-colors cursor-pointer"
+            class="px-2.5 py-1 rounded-md transition-all cursor-pointer font-medium text-xs flex items-center gap-1"
+            :class="activeTab === 'architecture' ? 'bg-emerald-500 text-white font-semibold shadow-xs' : 'text-slate-200 hover:text-white hover:bg-slate-600/80'"
           >
             雛形構成を見る
           </button>
-          <span aria-hidden="true">·</span>
           <button
             type="button"
             @click="activeTab = 'api'"
-            class="hover:text-slate-800 transition-colors cursor-pointer"
+            class="px-2.5 py-1 rounded-md transition-all cursor-pointer font-medium text-xs flex items-center gap-1"
+            :class="activeTab === 'api' ? 'bg-emerald-500 text-white font-semibold shadow-xs' : 'text-slate-200 hover:text-white hover:bg-slate-600/80'"
           >
             API仕様
           </button>
