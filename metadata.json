@@ -1,0 +1,6 @@
+{
+  "name": "Vue Node TODO App",
+  "description": "Vue.js 3フロントエンド、Node.js (Express) バックエンド、および即時利用可能なSQLiteデータベースによるTODOリストCRUDアプリケーションの雛形プロジェクト",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
